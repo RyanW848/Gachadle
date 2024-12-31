@@ -1,22 +1,24 @@
-import "../App.css";
 import { useNavigate } from "react-router-dom";
+import genshinImg from "../assets/games/genshin.webp";
+import hsrImg from "../assets/games/hsr.webp";
+import arknightsImg from "../assets/games/arknights.png";
 
-function Navbar() {
+export default function Navbar() {
     const navigate = useNavigate();
     const games = [
         {
             name: "Genshin",
-            img: "https://static.wikia.nocookie.net/gensin-impact/images/8/80/Genshin_Impact.png/",
+            img: genshinImg,
             path: "/genshin",
         },
         {
             name: "Star Rail",
-            img: "https://static.wikia.nocookie.net/houkai-star-rail/images/8/84/Honkai_Star_Rail_App.png/",
+            img: hsrImg,
             path: "/starrail",
         },
         {
             name: "Arknights",
-            img: "https://play-lh.googleusercontent.com/D4DUUFQDCsH9NIEa8hjMjQSWdtNhGX1Fd_jT-23ogAb5uMMqttqQDUJcUt4K_u8RYOQ",
+            img: arknightsImg,
             path: "/arknights",
         },
     ];
@@ -55,5 +57,3 @@ function Navbar() {
         </nav>
     );
 }
-
-export default Navbar;
