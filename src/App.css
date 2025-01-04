@@ -3,6 +3,13 @@ body {
   background-color: black;
 }
 
+.game-body {
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .navbar {
   height: 60px;
 }
