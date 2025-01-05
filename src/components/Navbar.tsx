@@ -3,7 +3,7 @@ import genshinImg from "../assets/games/genshin.webp";
 import hsrImg from "../assets/games/hsr.webp";
 import arknightsImg from "../assets/games/arknights.png";
 
-export default function Navbar() {
+function Navbar() {
     const navigate = useNavigate();
     const games = [
         {
@@ -57,3 +57,5 @@ export default function Navbar() {
         </nav>
     );
 }
+
+export default Navbar;

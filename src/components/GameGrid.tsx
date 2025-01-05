@@ -5,7 +5,7 @@ import hsrImg from "../assets/games/hsr.webp";
 import arknightsImg from "../assets/games/arknights.png";
 import bluearchiveImg from "../assets/games/bluearchive.jpg";
 
-export default function GameGrid() {
+function GameGrid() {
     const navigate = useNavigate();
     
     const games = [
@@ -34,3 +34,5 @@ export default function GameGrid() {
         </div>
     );
 }
+
+export default GameGrid;

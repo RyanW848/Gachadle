@@ -1,5 +1,5 @@
 body {
-  padding-top: 60px;
+  padding-top: 55px;
   background-color: black;
 }
 
@@ -11,7 +11,7 @@ body {
 }
 
 .navbar {
-  height: 60px;
+  height: 55px;
 }
 
 .nav-item {
@@ -82,3 +82,63 @@ body {
   margin: 6px;
   font-size: 16px;
 }
+
+.guess-table {
+  margin-top: 5vh;
+  border: 5px solid black;
+  border-radius: 10px; 
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: white;
+}
+
+.table-header {
+  height: 3vw;
+  width: 7vw;
+  text-align: center;
+  background-color: blue;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.guess-square {
+  width: 7vw;
+  height: 7vw;
+  text-align: center;
+  background-color: lightcoral;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.autocomplete-container {
+  position: relative;
+  width: 300px; /* or whatever width you prefer */
+}
+
+.autocomplete-results {
+  position: absolute;  /* Allows the dropdown to overlap */
+  top: 100%;  /* Places the dropdown just below the input */
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;  /* Scrollable if the list is too long */
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: white;
+  z-index: 10;  /* Ensure dropdown overlaps other content */
+}
+
+.autocomplete-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
+.autocomplete-item:active {
+  background-color: #dcdcdc;
+}
+
