@@ -3,7 +3,12 @@ body {
   background-color: black;
 }
 
-.game-body {
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.game-background {
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -111,27 +116,30 @@ body {
   padding: 10px;
 }
 
-.autocomplete-container {
+.input-container {
   position: relative;
-  width: 300px; /* or whatever width you prefer */
+  width: 500px; 
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
 }
 
-.autocomplete-results {
-  position: absolute;  /* Allows the dropdown to overlap */
-  top: 100%;  /* Places the dropdown just below the input */
+.input-results {
+  position: absolute;  
+  top: 100%;  
   left: 0;
   right: 0;
   max-height: 200px;
-  overflow-y: auto;  /* Scrollable if the list is too long */
+  overflow-y: auto;  
   border: 1px solid #ccc;
   border-top: none;
   background-color: white;
-  z-index: 10;  /* Ensure dropdown overlaps other content */
 }
 
-.autocomplete-item {
+.input-item {
   padding: 8px;
   cursor: pointer;
+  text-align: center;
 }
 
 .autocomplete-item:hover {

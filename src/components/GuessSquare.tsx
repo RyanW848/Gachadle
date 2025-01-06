@@ -1,6 +1,6 @@
 function GuessSquare() {
   return (
-    <td className="guess-square">red</td>
+    <td className="guess-square">A</td>
   );
 };
 

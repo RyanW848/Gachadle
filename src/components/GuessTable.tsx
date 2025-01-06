@@ -1,11 +1,19 @@
 import GuessRow from "./GuessRow.tsx";
 import "../App.css"
 
-function GuessTable({ game }: { game: String }) {
+function GuessTable({ game }: { game: string }) {
 
     const gameMap = [
         {
             name: "Genshin",
+            categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
+        },
+        {
+            name: "StarRail",
+            categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
+        },
+        {
+            name: "Arknights",
             categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
         },
     ];

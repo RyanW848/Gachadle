@@ -1,5 +1,9 @@
+import GuessingGame from "../components/GuessingGame.tsx";
+
 function Arknights() {
-    return <p>Arknights</p>;
+    return (
+        <GuessingGame game={"Arknights"}/>
+    );
 }
 
 export default Arknights;

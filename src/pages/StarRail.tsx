@@ -1,5 +1,9 @@
+import GuessingGame from "../components/GuessingGame.tsx";
+
 function StarRail() {
-    return <p>StarRail</p>;
+    return (
+        <GuessingGame game={"StarRail"}/>
+    );
 }
 
 export default StarRail;

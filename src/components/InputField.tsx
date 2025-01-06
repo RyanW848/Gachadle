@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-function InputField({ game } : { game: String }) {
+function InputField({ game } : { game: string }) {
   const [query, setQuery] = useState<string>('');
   const [matches, setMatches] = useState<string[]>([]);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const characterNames = ['Gandalf', 'Gerry', 'Gabby', 'Red']
 
@@ -20,39 +22,72 @@ function InputField({ game } : { game: String }) {
     }
   };
 
-  const handleSelect = (match: string) => {
-    setQuery(match);
-    setMatches([]); // Clear suggestions after selecting a match
+  // Recalculate matches when input gains focus
+  const handleFocus = () => {
+    setIsFocused(true);
+    if (query.length > 0) {
+      const filteredMatches = characterNames.filter((name) =>
+        name.toLowerCase().includes(query.toLowerCase())
+      );
+      setMatches(filteredMatches);
+    }
   };
 
+  const handleBlur = () => {
+    setIsFocused(false);
+    setMatches([]); 
+  };
+
+  const handleSelect = (match: string) => {
+    setQuery(match);
+    setMatches([]);
+    setIsFocused(false);
+  };
+
+  // Close dropdown if user clicks outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+        setMatches([]); 
+      } 
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="autocomplete-container" style={{ position: 'relative', width: '300px' }}>
-      <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        placeholder="Search for a character..."
-        style={{ width: '100%', padding: '8px', fontSize: '14px', border: '1px solid #ccc', borderRadius: '5px' }}
-      />
-      {matches.length > 0 && (
-        <div className="autocomplete-results" style={{
-          position: 'relative', top: '100%', left: '0', right: '0', maxHeight: '200px', overflowY: 'auto',
-          border: '1px solid #ccc', borderTop: 'none', backgroundColor: 'white', zIndex: 10
-        }}>
-          {matches.map((match, index) => (
-            <div
-              key={index}
-              className="autocomplete-item"
-              style={{
-                padding: '8px', cursor: 'pointer', backgroundColor: '#fff'
-              }}
-              onClick={() => handleSelect(match)}
-            >
-              {match}
-            </div>
-          ))}
+    <div className="centered">
+      <div className="input-container">
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          ref={inputRef}
+          onFocus={handleFocus}
+          onBlur={handleBlur} 
+          placeholder="Search for a character..."
+          style={{ width: '100%', padding: '8px', fontSize: '14px', border: '1px solid #ccc', borderRadius: '5px' }}
+        />
+        {matches.length > 0 && (
+          <div className="input-results" >
+            {matches.map((match) => (
+              <div
+                className="input-item"
+                onClick={() => handleSelect(match)}
+              >
+                {match}
+              </div>
+            ))}
+          </div>
+        )}
+        {isFocused && matches.length === 0 && query && (
+        <div className="input-results input-item">
+          No matches found
         </div>
       )}
+      </div>
     </div>
   );
 };
