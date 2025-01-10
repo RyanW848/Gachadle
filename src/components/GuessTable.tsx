@@ -28,8 +28,8 @@ function GuessTable({ game }: { game: string }) {
             <table className="guess-table">
                 <thead>
                     <tr>
-                        {currentGame.categories.map((category) => (
-                            <th className="table-header">{category}</th>
+                        {currentGame.categories.map((category, index) => (
+                            <th key={index} className="table-header">{category}</th>
                         ))}    
                     </tr>
                 </thead>

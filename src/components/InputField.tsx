@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+import { AssetFinder } from 'enkanetwork.js';
 
 function InputField({ game } : { game: string }) {
   const [query, setQuery] = useState<string>('');
   const [matches, setMatches] = useState<string[]>([]);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  //const { genshin } = new AssetFinder();
+  //console.log(genshin.character(10000046).name);
 
   const characterNames = ['Gandalf', 'Gerry', 'Gabby', 'Red']
 
@@ -72,8 +76,9 @@ function InputField({ game } : { game: string }) {
         />
         {matches.length > 0 && (
           <div className="input-results" >
-            {matches.map((match) => (
+            {matches.map((match, index) => (
               <div
+                key={index}
                 className="input-item"
                 onClick={() => handleSelect(match)}
               >

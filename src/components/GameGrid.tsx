@@ -26,7 +26,7 @@ function GameGrid() {
     return (
         <div className="game-grid">
             {games.map((game) => (
-                <div className="game-card" onClick={() => click(game)}>
+                <div key={game.name}    className="game-card" onClick={() => click(game)}>
                     <img src={game.img} alt={game.name} />
                     <p>{game.name}</p>
                 </div>
