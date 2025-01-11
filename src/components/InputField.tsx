@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { AssetFinder } from 'enkanetwork.js';
+import { genshinCharacters } from "../assets/gameData/genshin.tsx"
 
 function InputField({ game } : { game: string }) {
   const [query, setQuery] = useState<string>('');
@@ -7,10 +7,11 @@ function InputField({ game } : { game: string }) {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  //const { genshin } = new AssetFinder();
-  //console.log(genshin.character(10000046).name);
+  const gameToData: Record<string, any> = {
+    "Genshin" : genshinCharacters
+  }
 
-  const characterNames = ['Gandalf', 'Gerry', 'Gabby', 'Red']
+  const characterNames = Object.keys(gameToData[game]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -18,7 +19,7 @@ function InputField({ game } : { game: string }) {
 
     if (input.length > 0) {
       const filteredMatches = characterNames.filter(name =>
-        name.toLowerCase().includes(input.toLowerCase())
+        name.toLowerCase().startsWith(input.toLowerCase())
       );
       setMatches(filteredMatches);
     } else {
@@ -31,7 +32,7 @@ function InputField({ game } : { game: string }) {
     setIsFocused(true);
     if (query.length > 0) {
       const filteredMatches = characterNames.filter((name) =>
-        name.toLowerCase().includes(query.toLowerCase())
+        name.toLowerCase().startsWith(query.toLowerCase())
       );
       setMatches(filteredMatches);
     }
@@ -78,10 +79,15 @@ function InputField({ game } : { game: string }) {
           <div className="input-results" >
             {matches.map((match, index) => (
               <div
-                key={index}
+                key={match}
                 className="input-item"
                 onClick={() => handleSelect(match)}
               >
+                <img
+                  src={`/src/assets/headshots/${game.toLowerCase()}/${match.replace(' ', '_')}.png`}
+                  alt={match}
+                  className="icon"
+                />
                 {match}
               </div>
             ))}

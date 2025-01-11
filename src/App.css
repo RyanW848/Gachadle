@@ -129,7 +129,7 @@ body {
   top: 100%;  
   left: 0;
   right: 0;
-  max-height: 200px;
+  max-height: 400px;
   overflow-y: auto;  
   border: 1px solid #ccc;
   border-top: none;
@@ -140,6 +140,7 @@ body {
   padding: 8px;
   cursor: pointer;
   text-align: center;
+  height:100px;
 }
 
 .autocomplete-item:hover {
@@ -148,5 +149,10 @@ body {
 
 .autocomplete-item:active {
   background-color: #dcdcdc;
+}
+
+.icon {
+  height: 100px;
+  width: 100px;
 }
 

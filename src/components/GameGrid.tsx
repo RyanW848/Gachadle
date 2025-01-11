@@ -1,9 +1,9 @@
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import genshinImg from "../assets/games/genshin.webp";
-import hsrImg from "../assets/games/hsr.webp";
-import arknightsImg from "../assets/games/arknights.png";
-import bluearchiveImg from "../assets/games/bluearchive.jpg";
+import genshinImg from "../assets/icons/genshin.webp";
+import hsrImg from "../assets/icons/hsr.webp";
+import arknightsImg from "../assets/icons/arknights.png";
+import bluearchiveImg from "../assets/icons/bluearchive.jpg";
 
 function GameGrid() {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ function GameGrid() {
     return (
         <div className="game-grid">
             {games.map((game) => (
-                <div key={game.name}    className="game-card" onClick={() => click(game)}>
+                <div key={game.name} className="game-card" onClick={() => click(game)}>
                     <img src={game.img} alt={game.name} />
                     <p>{game.name}</p>
                 </div>
