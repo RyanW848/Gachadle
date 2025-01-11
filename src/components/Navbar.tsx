@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import genshinImg from "../assets/games/genshin.webp";
-import hsrImg from "../assets/games/hsr.webp";
-import arknightsImg from "../assets/games/arknights.png";
+import genshinImg from "../assets/icons/genshin.webp";
+import hsrImg from "../assets/icons/hsr.webp";
+import arknightsImg from "../assets/icons/arknights.png";
 
 function Navbar() {
     const navigate = useNavigate();

@@ -1,6 +1,7 @@
 body {
   padding-top: 55px;
   background-color: black;
+  overflow: hidden;
 }
 
 .centered {
@@ -118,7 +119,7 @@ body {
 
 .input-container {
   position: relative;
-  width: 500px; 
+  width: 40vw; 
   display: flex;
   justify-content: center;
   margin-top: 5vh;
@@ -130,29 +131,35 @@ body {
   left: 0;
   right: 0;
   max-height: 400px;
-  overflow-y: auto;  
+  overflow-y: scroll;  
   border: 1px solid #ccc;
   border-top: none;
   background-color: white;
+  z-index: 10;
 }
 
 .input-item {
-  padding: 8px;
+  margin: 8px;
+  padding: 4px;
   cursor: pointer;
   text-align: center;
-  height:100px;
+  border: 1px black solid;
+  display: flex;               /* Enable flexbox */
+  align-items: center;         /* Vertically align items (optional) */
+  justify-content: space-between; /* Distribute space between items */
+  position: relative; 
 }
 
-.autocomplete-item:hover {
+.input-item:hover {
   background-color: #f0f0f0;
 }
 
-.autocomplete-item:active {
+.input-item:active {
   background-color: #dcdcdc;
 }
 
 .icon {
   height: 100px;
-  width: 100px;
+  width: 100px; 
 }
 

@@ -27,7 +27,6 @@ function InputField({ game } : { game: string }) {
     }
   };
 
-  // Recalculate matches when input gains focus
   const handleFocus = () => {
     setIsFocused(true);
     if (query.length > 0) {
@@ -52,7 +51,7 @@ function InputField({ game } : { game: string }) {
   // Close dropdown if user clicks outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+      if (inputRef.current && !inputRef.current.contains(event.target as Node) && !(event.target instanceof HTMLElement && event.target.closest('.input-results'))) {
         setMatches([]); 
       } 
     };
@@ -67,9 +66,9 @@ function InputField({ game } : { game: string }) {
       <div className="input-container">
         <input
           type="text"
-          value={query}
-          onChange={handleChange}
+          value={query} 
           ref={inputRef}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur} 
           placeholder="Search for a character..."
@@ -77,7 +76,7 @@ function InputField({ game } : { game: string }) {
         />
         {matches.length > 0 && (
           <div className="input-results" >
-            {matches.map((match, index) => (
+            {matches.map((match) => (
               <div
                 key={match}
                 className="input-item"
@@ -88,16 +87,18 @@ function InputField({ game } : { game: string }) {
                   alt={match}
                   className="icon"
                 />
-                {match}
+                { 
+                  <span style={{position: 'absolute', left: '50%', transform: 'translateX(-50%)'}}>{match}</span>
+                }
               </div>
             ))}
           </div>
         )}
         {isFocused && matches.length === 0 && query && (
-        <div className="input-results input-item">
-          No matches found
-        </div>
-      )}
+          <div className="input-results input-item">
+            No matches found
+          </div>
+        )}
       </div>
     </div>
   );
