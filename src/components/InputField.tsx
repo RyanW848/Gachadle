@@ -19,7 +19,7 @@ function InputField({ game } : { game: string }) {
 
     if (input.length > 0) {
       const filteredMatches = characterNames.filter(name =>
-        name.toLowerCase().startsWith(input.toLowerCase())
+        name.toLowerCase().includes(input.toLowerCase())
       );
       setMatches(filteredMatches);
     } else {
@@ -31,7 +31,7 @@ function InputField({ game } : { game: string }) {
     setIsFocused(true);
     if (query.length > 0) {
       const filteredMatches = characterNames.filter((name) =>
-        name.toLowerCase().startsWith(query.toLowerCase())
+        name.toLowerCase().includes(query.toLowerCase())
       );
       setMatches(filteredMatches);
     }
@@ -95,7 +95,10 @@ function InputField({ game } : { game: string }) {
           </div>
         )}
         {isFocused && matches.length === 0 && query && (
-          <div className="input-results input-item">
+          <div 
+            className="input-results"
+            style={{padding: '4px', cursor: 'pointer', textAlign: 'center', border: '1px black solid' }}
+          >
             No matches found
           </div>
         )}

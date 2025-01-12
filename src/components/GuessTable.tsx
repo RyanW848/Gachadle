@@ -1,20 +1,21 @@
 import GuessRow from "./GuessRow.tsx";
 import "../App.css"
+import { genshinCharacters } from "../assets/gameData/genshin.tsx"
 
 function GuessTable({ game }: { game: string }) {
 
     const gameMap = [
         {
             name: "Genshin",
-            categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
+            data: genshinCharacters, 
         },
         {
             name: "StarRail",
-            categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
+            data: genshinCharacters, 
         },
         {
             name: "Arknights",
-            categories: ['Character', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], 
+            data: genshinCharacters, 
         },
     ];
 
@@ -23,12 +24,16 @@ function GuessTable({ game }: { game: string }) {
         return <p>Game not found</p>;
     }
 
+    const gameData = currentGame.data;
+    const exampleData = Object.values(gameData)[0];
+    const categories = ["Photo", "Name"].concat(Object.keys(exampleData));
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <table className="guess-table">
                 <thead>
                     <tr>
-                        {currentGame.categories.map((category, index) => (
+                        {categories.map((category, index) => (
                             <th key={index} className="table-header">{category}</th>
                         ))}    
                     </tr>

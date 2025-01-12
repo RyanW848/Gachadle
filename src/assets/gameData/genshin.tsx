@@ -1,4 +1,14 @@
-export const genshinCharacters = {
+type CharacterInfo = {
+    Quality: string; 
+    Element: string;
+    Weapon: string;
+    Region: string;
+    Gender: string;
+    Version: string;
+  };
+
+export const genshinCharacters: Record<string, CharacterInfo> = {
+    "Aether": {Quality: "5", Element: "None", Weapon: "Sword", Region: "None", Gender: "Male", Version: "1.0"},
     "Albedo": {Quality: "5", Element: "Geo", Weapon: "Sword", Region: "Mondstadt", Gender: "Male", Version: "1.2"},
     "Alhaitham": {Quality: "5", Element: "Dendro", Weapon: "Sword", Region: "Sumeru", Gender: "Male", Version: "3.4"},
     "Aloy": {Quality: "5", Element: "Cryo", Weapon: "Bow", Region: "None", Gender: "Female", Version: "2.1"},
@@ -48,6 +58,7 @@ export const genshinCharacters = {
     "Kuki Shinobu": {Quality: "4", Element: "Electro", Weapon: "Sword", Region: "Inazuma", Gender: "Female", Version: "2.7"},
     "Layla": {Quality: "4", Element: "Cryo", Weapon: "Sword", Region: "Sumeru", Gender: "Female", Version: "3.2"},
     "Lisa": {Quality: "4", Element: "Electro", Weapon: "Catalyst", Region: "Mondstadt", Gender: "Female", Version: "1.0"},
+    "Lumine": {Quality: "5", Element: "None", Weapon: "Sword", Region: "None", Gender: "Female", Version: "1.0"},
     "Lynette": {Quality: "4", Element: "Anemo", Weapon: "Sword", Region: "Fontaine", Gender: "Female", Version: "4.0"},
     "Lyney": {Quality: "5", Element: "Pyro", Weapon: "Bow", Region: "Fontaine", Gender: "Male", Version: "4.0"},
     "Mavuika": {Quality: "5", Element: "Pyro", Weapon: "Claymore", Region: "Natlan", Gender: "Female", Version: "5.3"},
@@ -75,7 +86,6 @@ export const genshinCharacters = {
     "Tartaglia": {Quality: "5", Element: "Hydro", Weapon: "Bow", Region: "Fontaine", Gender: "Male", Version: "1.1"},
     "Thoma": {Quality: "4", Element: "Pyro", Weapon: "Polearm", Region: "Inazuma", Gender: "Male", Version: "2.0"},
     "Tighnari": {Quality: "5", Element: "Dendro", Weapon: "Bow", Region: "Sumeru", Gender: "Male", Version: "3.0"},
-    "Traveler": {Quality: "5", Element: "None", Weapon: "Sword", Region: "None", Gender: "Male", Version: "1.0"},
     "Venti": {Quality: "5", Element: "Anemo", Weapon: "Bow", Region: "Mondstadt", Gender: "Male", Version: "1.0"},
     "Wanderer": {Quality: "5", Element: "Anemo", Weapon: "Catalyst", Region: "Inazuma", Gender: "Male", Version: "3.3"},
     "Wriothesley": {Quality: "5", Element: "Cryo", Weapon: "Catalyst", Region: "Fontaine", Gender: "Male", Version: "4.1"},
